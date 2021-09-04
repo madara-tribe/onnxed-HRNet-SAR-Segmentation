@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from utils.cal_iou import calc_IoU
 from utils.TTA import run_tta
 from utils.binary_mask import create_binary_mask
-from equalizeHist import equalizeHist
+from sar_factory.equalizeHist import equalizeHist
 
 
 
