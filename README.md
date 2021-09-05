@@ -28,6 +28,17 @@ is a general purpose convolutional neural network for tasks like semantic segmen
 
 # approach: crop, prediction and concat
 
+large image and few dataset, so crop large images to small.
+after train, predict cropped image and concat, resulting in achieving small area segmentaton
+
+<img src="https://user-images.githubusercontent.com/48679574/132129051-b25f14c9-3a2c-484b-ade5-c65c0711077d.png" width="800px">
+
+
+# result 
+
+
+
+
 
 
 
