@@ -1,4 +1,4 @@
-# HRNet-SAR-Segmentation
+# HRNet SAR Segmentation
 
 # Version
 - python 3.7.0
@@ -21,15 +21,15 @@ semantic segmentation for SAR(synthetic aperture radar) images which is took fro
 
 The high-resolution network (HRNet) is a universal architecture for visual recognition.
 
-is a general purpose convolutional neural network for tasks like semantic segmentation, object detection and image classification. It is able to maintain high resolution representations through the whole process
+HRNet is a general purpose convolutional neural network for tasks like semantic segmentation, object detection and image classification. It is able to maintain high resolution representations through the whole process
 
 <img src="https://user-images.githubusercontent.com/48679574/132123348-925e4648-cdfa-43f0-98fd-f97e87947056.png" width="800px">
 
 
 # approach: crop, prediction and concat
 
-large image and few dataset, so crop large images to small.
-after train, predict cropped image and concat, resulting in achieving small area segmentaton
+Limited with large image and few dataset, so crop large images to small.
+After training, predict cropped image and concat, resulting in achieving small area segmentaton
 
 <img src="https://user-images.githubusercontent.com/48679574/132129051-b25f14c9-3a2c-484b-ade5-c65c0711077d.png" width="800px">
 
