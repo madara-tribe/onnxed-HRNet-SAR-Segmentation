@@ -14,7 +14,7 @@ semantic segmentation for in SAR(synthetic aperture radar) images which is took 
 
 1 SAR image has VV and HV type. its task to detect new bulding that did not exist in the past
 
-<img src="https://user-images.githubusercontent.com/48679574/132123393-eef67a13-83b5-46b1-845b-7539ef6dba01.png" width="400px">
+<img src="https://user-images.githubusercontent.com/48679574/132123393-eef67a13-83b5-46b1-845b-7539ef6dba01.png" width="600px">
 
 
 ## Network : HRNet
