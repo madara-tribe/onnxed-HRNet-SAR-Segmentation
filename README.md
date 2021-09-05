@@ -10,7 +10,7 @@
 
 # abstract
 
-semantic segmentation for in SAR(synthetic aperture radar) images which is took from satelliate.
+semantic segmentation for SAR(synthetic aperture radar) images which is took from satelliate.
 
 1 SAR image has VV and HV type. its task to detect new bulding that did not exist in the past
 
