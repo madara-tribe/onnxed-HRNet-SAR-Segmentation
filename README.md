@@ -34,7 +34,12 @@ After training, predict cropped image and concat, resulting in achieving small a
 <img src="https://user-images.githubusercontent.com/48679574/132129051-b25f14c9-3a2c-484b-ade5-c65c0711077d.png" width="800px">
 
 
-# result 
+# result
+## left groud truth.  right is prediction
+
+<img src="https://user-images.githubusercontent.com/48679574/132197945-0f00d7b7-7225-4498-b861-f22dac23af31.png" width="400px"><img src="https://user-images.githubusercontent.com/48679574/132197955-b5453080-7f57-4e43-b0eb-90f8fd65d426.png" width="400px">
+
+
 
 
 
