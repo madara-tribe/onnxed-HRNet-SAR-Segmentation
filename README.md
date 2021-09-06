@@ -26,7 +26,7 @@ HRNet is a general purpose convolutional neural network for tasks like semantic 
 <img src="https://user-images.githubusercontent.com/48679574/132123348-925e4648-cdfa-43f0-98fd-f97e87947056.png" width="800px">
 
 
-# approach: crop, prediction and concat
+# emphasis approach: crop, prediction and concat
 
 Limited with large image and few dataset, so crop large images to small.
 After training, predict cropped image and concat, resulting in achieving small area segmentaton
