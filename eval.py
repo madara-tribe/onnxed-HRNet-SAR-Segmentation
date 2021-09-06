@@ -22,8 +22,8 @@ def load_model(config=None, weight_path=None):
 
 if __name__=='__main__':
     config=get_option()
-    model = load_model(config, weight_path='cp-06.hdf5')
-    annos, preds = TIFeval(tta=None).predict(model)
+    model = load_model(config, weight_path='cp-01.hdf5')
+    annos, preds = TIFeval(tta=None, mask_threshold=0.9).predict(model)
     print(preds.shape, annos.shape, preds.max(), preds.min(), np.unique(annos))
     np.save('preds', preds)
 

@@ -11,7 +11,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import Model
 from losses.bce_dice_loss import bce_dice_loss, dice_loss 
 from utils.fbeta_score import binary_fbeta
-from augmentation import flip, random_eraser
+from augmentation import flip, gause_noise, salts, Smoothing
 from option_parser import get_option
 from model.seg_hrnet import seg_hrnet
 
@@ -19,11 +19,14 @@ H=448
 W=448
 C=3
 
-def gene_flow_inputs(datagen, x_image, y_train, batch=2):
-    batch = datagen.flow(x_image, y_train, batch_size=batch)
-    while True:
-        batch_image, batch_mask = batch.next()
-        yield batch_image, batch_mask
+average_square = (10,10)
+
+def noise_aug(X, y):
+    X1 = [salts.salt(x_) for x_ in X]
+    #X2 = [gause_noise.gause_noise(x_) for x_ in X]
+    #X3 = [Smoothing.blur(x_) for x_ in X]
+    X, y = np.vstack([X, X1]), np.vstack([y, y])
+    return X, y
 
 def flipaug(X, y):
     X1, y1 = flip.npflip(X, types='lr'), flip.npflip(y, types='lr')
@@ -39,8 +42,10 @@ def load_data(config=None):
     X_train, y_train = imgs[N:], annos[N:]
     X_val, y_val = imgs[:N], annos[:N]
     X_train, y_train = flipaug(X_train, y_train)
+    #X_train, y_train = noise_aug(X_train, y_train)
+    
     X_val, y_val = flipaug(X_val, y_val)
-    print(imgs.shape, annos.shape)
+    print(X_train.shape, y_train.shape)
     return X_train, y_train, X_val, y_val
 
 def load_model(config=None, weight_path=None):
@@ -62,9 +67,9 @@ def call_callbacks():
     tb = TensorBoard(log_dir='./logs')
     return [cp_callback, reduce_lr, tb]
 
-def train(cfg):
+def train(cfg, weights=None):
     X_train, y_train, X_val, y_val = load_data(cfg)
-    models = load_model(config=cfg, weight_path=None) 
+    models = load_model(config=cfg, weight_path=weights) 
     
     callback = call_callbacks()
     
@@ -80,8 +85,8 @@ def train(cfg):
 
     _, acc = models.evaluate(X_val, y_val, verbose=0)
     print('\nTest accuracy: {0}'.format(acc))
-    
+
 if __name__=='__main__':
     cfg = get_option()
     os.makedirs(cfg.weight_dir, exist_ok=True)
-    train(cfg)
+    train(cfg, weights='pre_ep10.hdf5')

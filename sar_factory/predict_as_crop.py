@@ -13,12 +13,13 @@ from sar_factory.equalizeHist import equalizeHist
 
 
 class TIFeval():
-    def __init__(self, tta=True):
+    def __init__(self, tta=True, mask_threshold=0.9):
         self.resize_w, self.resize_h = 448, 448
         self.size = 448*2
         self.input_chanel = 3
         self.num_folder = 28
         self.tta = tta
+        self.mask_threshold = mask_threshold
     def predict_quarter_crop(self, m, img, size=448, c=3):
         c1 = img[0:size, 0:size].reshape(1, size, size, c)
         c2 = img[0:size, size:size*2].reshape(1, size, size, c)
@@ -98,7 +99,7 @@ class TIFeval():
             preds.append(pred_img)
             annos.append(anno)
             # IOU with create_binary_mask
-            b_mask = create_binary_mask(pred_img, threshold=0.9)
+            b_mask = create_binary_mask(pred_img, threshold=self.mask_threshold)
             print(calc_IoU(anno, b_mask))
             IOU += calc_IoU(anno, b_mask)
         print('total IOU', IOU/len(preds))
