@@ -19,8 +19,6 @@ H=448
 W=448
 C=3
 
-average_square = (10,10)
-
 def noise_aug(X, y):
     X1 = [salts.salt(x_) for x_ in X]
     #X2 = [gause_noise.gause_noise(x_) for x_ in X]
